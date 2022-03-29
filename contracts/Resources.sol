@@ -7,10 +7,6 @@ import "./Augmentations.sol";
 
 contract StoreResources is StoreAugmentations {
 
-    using SafeMath for uint;
-    using SafeMath16 for uint16;
-    using SafeMath32 for uint32;
-
     mapping(uint16 => uint256) resourcesPrices;
 
     event BuyResources(uint16 _ID, uint16 _amount, address _buyer);

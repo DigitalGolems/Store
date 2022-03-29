@@ -7,15 +7,27 @@ import "./Things.sol";
 
 contract Store is StoreThings {
 
-    function changeAllPricesWithPercent(uint256 percent) external isOwner {
+    function changeAllPricesWithPercentMinus(uint256 percent) external isOwner {
         for (uint16 i = 0; i < inventory.getThingsAmount(); i++) {
-            thingsPrices[i] = uint16(uint256(thingsPrices[i]) * percent / 100);
+            thingsPrices[i] = thingsPrices[i] - (thingsPrices[i] * percent / 100);
         }
         for (uint16 i = 0; i < inventory.getResourcesAmount(); i++) {
-            resourcesPrices[i] = uint16(uint256(resourcesPrices[i]) * percent / 100);
+            resourcesPrices[i] = resourcesPrices[i] - (resourcesPrices[i] * percent / 100);
         }
         for (uint16 i = 0; i < inventory.getAugmentationsAmount(); i++) {
-            augmentationsPrices[i] = uint16(uint256(augmentationsPrices[i]) * percent / 100);
+            augmentationsPrices[i] = augmentationsPrices[i] - (augmentationsPrices[i] * percent/ 100);
+        }
+    }
+
+    function changeAllPricesWithPercentPlus(uint256 percent) external isOwner {
+        for (uint16 i = 0; i < inventory.getThingsAmount(); i++) {
+            thingsPrices[i] = thingsPrices[i] + (thingsPrices[i] * percent / 100);
+        }
+        for (uint16 i = 0; i < inventory.getResourcesAmount(); i++) {
+            resourcesPrices[i] = resourcesPrices[i] + (resourcesPrices[i] * percent / 100);
+        }
+        for (uint16 i = 0; i < inventory.getAugmentationsAmount(); i++) {
+            augmentationsPrices[i] = augmentationsPrices[i] + (augmentationsPrices[i] * percent/ 100);
         }
     }
 

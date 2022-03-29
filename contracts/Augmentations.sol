@@ -4,25 +4,21 @@ pragma experimental ABIEncoderV2;
 pragma solidity 0.8.10;
 
 import "../../Utils/Owner.sol";
-import "../Inventory/Inventory.sol";
-import "../../Digibytes/Digibytes.sol";
+import "../Interfaces/IInventory.sol";
+import "../../Digibytes//Interfaces/IBEP20.sol";
 
 contract StoreAugmentations is Owner {
 
-    using SafeMath for uint;
-    using SafeMath16 for uint16;
-    using SafeMath32 for uint32;
-
-    Inventory public inventory;
-    Digibytes public DBT;
+    IInventory public inventory;
+    IBEP20 public DBT;
     mapping(uint16 => uint256) augmentationsPrices;
 
     function setDBT(address _DBT) public isOwner {
-        DBT = Digibytes(_DBT);
+        DBT = IBEP20(_DBT);
     }
 
     function setInventory(address _inventory) public isOwner {
-        inventory = Inventory(_inventory);
+        inventory = IInventory(_inventory);
     }
 
     event BuyAugmentations(uint16 _ID, uint16 _amount, address _buyer);

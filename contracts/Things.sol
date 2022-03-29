@@ -7,10 +7,6 @@ import "./Resources.sol";
 
 contract StoreThings is StoreResources {
 
-    using SafeMath for uint;
-    using SafeMath16 for uint16;
-    using SafeMath32 for uint32;
-
     mapping(uint16 => uint256) thingsPrices;
 
     event BuyThings(uint16 _ID, uint16 _amount, address _buyer);
